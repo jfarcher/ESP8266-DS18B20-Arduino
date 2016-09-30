@@ -1,0 +1,12 @@
+/*********WiFi settings*******/
+#define WLAN_SSID "YOUR_WIFI_SSID"
+#define WLAN_PASS "YOUR_WIFI_PASSPHRASE"
+#define MQTT_SERVERPORT  1883                   // use 8883 for SSL
+/*****************************/
+
+/*********MQTT Settings*******/
+#define mqtt_server "YOUR_MQTT_SERVER"
+
+#define mqtt_user ""
+#define mqtt_password ""
+
