@@ -1,3 +1,15 @@
+##ESP based temperature sensor##
+Add a Dallas DS18B20 temperature sensor to an ESP chip and output the data to an MQTT server.
+
+In this sketch the data pin of the DS18B20 connects to D4 of a Wemos D1 Mini, or NodeMCU board, VCC to 3V and GND to GND.
+
+Note the DS18B20 requires connection of a 4.7k pullup resistor between DATA and VCC.
+
+The Arduino OTA library is included to send OTA updates from the Arduino IDE.
+
+This sketch is constantly active, reporting the temperature every 10000 milisecs, therefore will require a permanent power supply. A seperate sketch will follow which will harness deep sleep for use with battery (obviously this will discard the use of OTAvia MDNS)
+
+
 #How to Use:#
 ### Installing with Boards Manager ###
 Taken from: ```https://github.com/esp8266/Arduino```
@@ -15,5 +27,16 @@ DS18B20
 
 Wire
 
-Adafruit MQTT
+PubSubClient
+
+ArduinoOTA
+
+There is an included config.h.sample, you will need to copy this to config.h and edit the properties to reflect your WiFi details and MQTT server.
+
+##Bill of materials##
+
+D1 Mini http://www.banggood.com/D1-Mini-NodeMcu-Lua-WIFI-ESP8266-Development-Board-p-1044858.html
+
+DS18B20 module (inc 4.7k resistor) http://www.banggood.com/DS18B20-Digital-Temperature-Sensor-Module-For-Arduino-p-76516.html
+
 
