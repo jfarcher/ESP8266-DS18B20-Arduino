@@ -23,7 +23,7 @@ Starting with 1.6.4, Arduino allows installation of third-party platform package
 
 ###Once you have the IDE configured you will need to add the following libraries:###
 
-DS18B20
+OneWire
 
 Wire
 
