@@ -25,7 +25,6 @@ void setup() {
   setup_sensors();  
   client.setServer(mqtt_server, 1883);
   #define mac  WiFi.macAddress()
-  #define start_topic (String("device/start").c_str())  
   #define mqtt_topic (String("device/" + mac + "/temperature").c_str())
 
 }
@@ -100,15 +99,17 @@ float temp = 0.0;
 
 void loop() {
   ArduinoOTA.handle();
-  if (!client.connected()) {
-    reconnect();
-  }
+  
+  
   long now = millis();
-  if (now - lastMsg > 20000){    
+  if (now - lastMsg > 10000){    
     lastMsg = now;
     sensors.requestTemperatures();
     float tempC = sensors.getTempC(tempsens);
-    client.publish(mqtt_topic, String(tempC).c_str(), true);
+    if (!client.connected()) {
+      reconnect();
+    }
+    client.publish(mqtt_topic, String(tempC).c_str(), false);
   }
   client.loop();
 }
